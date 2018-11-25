@@ -1,0 +1,83 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\000031}}
+html,
+body {
+  height: 100%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\000036}}
+body {
+  background: pink;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000310}}
+.container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000316}}
+.lv-head {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000323}}
+.lv-head .logo {
+  font-size: 25px;
+  text-decoration: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000328}}
+.lv-head .right {
+  display: flex;
+  align-items: center;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000335}}
+.lv-foot {
+  height: 50px;
+  border-top: 1px solid black;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000341}}
+.lv-menu {
+  width: 250px;
+  height: 100%;
+  overflow-y: auto;
+  border-right: 1px solid black;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000347}}
+.lv-menu li {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid black;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000354}}
+.lv-main {
+  flex: 1;
+  display: flex;
+  background: #fff;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000359}}
+.lv-main .body {
+  flex: 1;
+  padding: 0 20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000363}}
+.lv-main .body nav {
+  float: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000366}}
+.lv-main .body .search-bar {
+  margin-bottom: 20px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/common\.scss}line{font-family:\0000377}}
+.table-hover > tbody > tr:hover {
+  background: blue;
+}
+
+/*# sourceMappingURL=common.css.map */
