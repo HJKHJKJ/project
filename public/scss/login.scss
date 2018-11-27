@@ -1,0 +1,16 @@
+body{
+    background:url(/img/img.jpg) no-repeat;
+    background-size:100% 100%;
+    .container{
+        width:700px;
+        height:50px;
+        background:#ccc;
+        opacity:0.6;
+        margin:0 auto;
+        padding:10px 0 0 10px;
+        form{
+            margin-left:60px;
+        }
+    }
+
+}

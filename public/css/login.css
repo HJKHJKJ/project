@@ -1,0 +1,20 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/login\.scss}line{font-family:\000031}}
+body {
+  background: url(/img/img.jpg) no-repeat;
+  background-size: 100% 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/login\.scss}line{font-family:\000034}}
+body .container {
+  width: 700px;
+  height: 50px;
+  background: #ccc;
+  opacity: 0.6;
+  margin: 0 auto;
+  padding: 10px 0 0 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/nodeJS\/project\/public\/scss\/login\.scss}line{font-family:\0000311}}
+body .container form {
+  margin-left: 60px;
+}
+
+/*# sourceMappingURL=login.css.map */
