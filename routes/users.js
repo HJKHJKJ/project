@@ -41,6 +41,7 @@ router.get('/',function(req,res,next){
 //登陆操作
 router.post('/login',function(req,res){
   //    1.获取前端传递过来的参数；
+  
     //  2.验证参数的有效性；
     //  3.链接数据库做验证；
 
