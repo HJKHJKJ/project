@@ -1,5 +1,8 @@
 var express = require('express');
 var MongoClient = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectId;
+
+
 var async = require('async');
 var router = express.Router();
 
@@ -8,33 +11,100 @@ var url = 'mongodb://127.0.0.1:27017';
 /* GET users listing. */
 
 router.get('/',function(req,res,next){
-  MongoClient.connect(url,{useNewUrlParser:true},function(err,client){
+  
+  var page = parseInt(req.query.page) || 1;// 页码；
+  var pageSize = parseInt(req.query.pageSize) || 5;//每页显示的条数；
+  var totalSize = 0; //总条数；
+  var data = [];
+  MongoClient.connect(url,{useNewUrlParser:true},function(err,
+  client){
     if(err){
-      console.log('连接数据库失败',err);
       res.render('error',{
-        message:'链接数据库失败',
+        message:'链接失败',
         error:err
-      });
+      })
       return;
     }
-    var db = client.db('project');
-    db.collection('user').find().toArray(function(err,data){
-         if(err){
-             console.log("查询用户数据失败",err);
-             res.render('error',{
-                message:"查询失败",
-                error:err
-             })
-         }else{
-              console.log(data);
-              res.render('users',{
-                  list:data
-              });
-         }
-          client.close();
 
+    var db = client.db('project');
+
+    async.series([
+       function(cb){
+         db.collection('user').find().count(function(err,num){
+           if(err){
+             cb(err);
+           }else{
+             totalSize = num;
+             cb(null);
+           }
+         })
+       },
+
+       function(cb){
+         //limit();
+         //skip();
+         db.collection('user').find().limit(pageSize).skip(page*
+        pageSize - pageSize).toArray(function(er,data){
+          if(err){
+            cb(err)
+          }else{
+            data = data;
+            cb(null,data)
+          }
+        })
+       }
+
+    ],function(err,results){
+
+        if(err){
+          res.render('error',{
+            message:'错误',
+            error:err
+          })
+        }else{
+          var totalPage = Math.ceil(totalSize/pageSize) //总页数；
+          res.render('users',{
+            list:results[1],
+            // totalSize:totalSize,
+            totalPage:totalPage,
+            currentPage:page,
+            pageSize:pageSize
+          })
+        }
     })
-})
+
+  })
+
+
+
+
+//   MongoClient.connect(url,{useNewUrlParser:true},function(err,client){
+//     if(err){
+//       console.log('连接数据库失败',err);
+//       res.render('error',{
+//         message:'链接数据库失败',
+//         error:err
+//       });
+//       return;
+//     }
+//     var db = client.db('project');
+//     db.collection('user').find().toArray(function(err,data){
+//          if(err){
+//              console.log("查询用户数据失败",err);
+//              res.render('error',{
+//                 message:"查询失败",
+//                 error:err
+//              })
+//          }else{
+//               console.log(data);
+//               res.render('users',{
+//                   list:data
+//               });
+//          }
+//           client.close();
+
+//     })
+// })
 
 // res.render('users');
 });
@@ -149,8 +219,8 @@ router.post('/register',function(req,res){
     var pwd = req.body.pwd;
     var age = parseInt(req.body.age);
     var sex = req.body.sex;
-    var isAdmin = req.body.isAdmin === '是' ? true:false;
-
+    var isAdmin = req.body.isAdmin === '是' ? true : false;
+console.log(isAdmin);
     MongoClient.connect(url,{useNewUrlParser:true},function(err,
       client){
           if(err){
@@ -241,6 +311,41 @@ router.post('/register',function(req,res){
     //   })
     // })
 })
+
+
+//删除操作  localhost:3000/users/delete
+
+router.get('/delete',function(req,res){
+  var id = req.query.id;
+
+  MongoClient.connect(url,{useNewUrlParser:true},function(err,
+  client){
+    if(err){
+      res.render('error',{
+        message:'链接失败',
+        error:err
+      })
+      return;
+    }
+    var db = client.db('project');
+    db.collection('user').deleteOne({
+      _id:ObjectId(id)
+    },function(err,data){
+      console.log(data);
+      if(err){
+        res.render('error',{
+          message:'删除失败',
+          error:err
+        })
+      }else{
+        res.redirect('/users');
+        // res.send('<script>location.reload();</script>')
+      }
+      client.close();
+    })
+  })
+})
+
 
 
 
