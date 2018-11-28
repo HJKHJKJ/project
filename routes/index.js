@@ -10,6 +10,12 @@ router.get('/', function(req, res, next) {
 router.get('/login.html',function(req,res,next){
   res.render('login');
 });
+
+//注册页面
+router.get('/register.html',function(req,res){
+  res.render('register')
+})
+
 //品牌页面
 router.get('/brand.html',function(req,res){
   res.render('brand');

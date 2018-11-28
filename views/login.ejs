@@ -15,16 +15,18 @@
 
 <body>
      <div class="container">
-        <form action="/user/login" method="POST"">
+        <form action="/users/login" method="POST"">
             <label>
                 <span>用户名：</span>
-                <input type="text" placeholder="请输入用户名">
+                <input type="text" name="name" placeholder="请输入用户名">
             </label>
             <label>
                 <span>密码：</span>
-                <input type="text" placeholder="请输入密码">
+                <input type="text" name="pwd" placeholder="请输入密码">
             </label>
             <input type="submit" value="登陆">
+            <a href="/register.html">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                还没有账号,立即注册</a>
         </form>
      </div>
 </body>
